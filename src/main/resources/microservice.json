@@ -1,8 +1,7 @@
 {
-    "pl": {
-        "this": "pl/microhackaton/twitter-places-analyzer",
+    "europe": {
+        "this": "lt/microhackathon/loan-application-service",
         "dependencies": {
-            "collerator" : "pl/microhackaton/twitter-places-analyzer"
         }
     }
 }
