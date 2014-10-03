@@ -16,7 +16,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST
 @Slf4j
 @TypeChecked
 @RestController
-@RequestMapping('/application')
+@RequestMapping('/api/loanApplication')
 class NewLoanController {
     private final ServiceRestClient serviceRestClient
 
@@ -28,9 +28,8 @@ class NewLoanController {
     @RequestMapping(method = POST)
     void apply(@RequestBody LoanApplication applicationForNewLoan) {
         log.debug("NEW APPLICATION RECEIVED FROM UI: $applicationForNewLoan")
-
-        //send stuff to reporting service
-        //send stuff to FRED
+        send(applicationForNewLoan, "fraud-detection-service", "/api/loanApplication/$applicationForNewLoan.loanId")
+        send(applicationForNewLoan, "reporting-service", "/api/loan")
     }
 
     private HttpStatus send(Object stuffToSend, String serviceAlias, String url) {
@@ -49,6 +48,10 @@ class NewLoanController {
 @TypeChecked
 @ToString
 class LoanApplication {
+    String firstName
+    String lastName
+    Integer age
+    String jobPosition
     BigDecimal amount
     String loanId
 }
