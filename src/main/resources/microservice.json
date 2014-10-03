@@ -2,6 +2,8 @@
     "europe": {
         "this": "lt/microhackathon/loan-application-service",
         "dependencies": {
+            "fraud-detection-service": "lt/microhackathon/fraud-detection-service",
+            "reporting-service": "lt/microhackathon/reporting-service"
         }
     }
 }
